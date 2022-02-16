@@ -46,6 +46,7 @@ class Vertex():
         
         dis_point_list = []
         
+        ## x, y 좌표를 찾아서 max_length 밖에 있는 점들을 걸러내는 과정
         for k in range(list_input.index(i), -1, -1):
             if abs(point_x - list_input[k][0]) > self.max_length:
                 left_index = k
@@ -54,6 +55,7 @@ class Vertex():
             if abs(point_y - list_input[l][0]) > self.max_length:
                 right_index = l
         
+        ## 계산할 것만 거리 계산을 진행한다.
         list_to_cal = list_input[left_index:right_index+1]
         
         for j in list_to_cal:
@@ -68,12 +70,13 @@ class Vertex():
         
         return dis_point_list
     
-    def show_Vertex(self):
-        print(self.pos_xyz[0], self.pos_xyz[1], self.pos_xyz[2])
+    def return_Vertex(self):
+        return (self.pos_xyz[0], self.pos_xyz[1], self.pos_xyz[2])
     
     # 가장 가까이 있는 세 점을 연결하는 과정
     def connect_line(self, vertex, list_input):
         dis_point_list = self.cal_distance(list_input)
+        print(dis_point_list)
         if self.neighbor_1 == None:
             self.neighbor_1 = dis_point_list.pop(0)[1]
         if self.neighbor_2 == None and self.neightbor_1 != None:
@@ -91,22 +94,29 @@ class Triangle():
         self.V2 = V2
         self.V3 = V3
     
-
+class Verticies():
+    def __init__(self, value):
+        self.Vertex_list = []
+        self.max_length = value
+    
+    def add_Vertex(self, input_point):
+        self.Vertex_list.append(input_point)
+        
+    def show_list(self):
+        for i in self.Vertex_list:
+            print(i.return_Vertex())
+    
+    
 Mesh1 = Mesh()
-Vertex_list = []
+Verticies_class = Verticies(8)
 
 for i in range(50):
     a, b, c = random.uniform(0, 100), random.uniform(0, 100), random.uniform(0, 10)
-    Vertex_list.append((a, b, c))
+    adding_point = Vertex((a, b, c), 8)
+    Verticies_class.add_Vertex(adding_point)
+'''
+Verticies_class.Vertex_list = sorted(Verticies_class.Vertex_list, key = lambda x : (x[0]))
 
-Vertex_sorted_X = sorted(Vertex_list, key = lambda x : (x[0]))
-
-Vertex_class_list = []
 max_distance = 8
-
-for i in Vertex_sorted_X:
-    Vertex_class_list.append(Vertex(i, max_distance))
-
-for i in Vertex_class_list:
-    Vertex.show_Vertex(i)
-
+'''
+Verticies_class.show_list()
