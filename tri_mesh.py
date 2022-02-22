@@ -87,6 +87,12 @@ class line():
     def __init__(self, V1, V2):
         self.V1 = V1
         self.V2 = V2
+    
+    # 한 점에서 다른 점으로 교차가 생기지 않도록 한다.
+    # 이 부분은 다이나믹 프로그래밍을 사용하는 것이 좋을 것 같다.
+    # 처음 시작점이 필요하다.
+    def make_line(self, V1, V2):
+        
 
 class Triangle():
     def __init__(self, V1=None, V2=None, V3=None):
