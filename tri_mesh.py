@@ -92,7 +92,7 @@ class line():
     # 이 부분은 다이나믹 프로그래밍을 사용하는 것이 좋을 것 같다.
     # 처음 시작점이 필요하다.
     def make_line(self, V1, V2):
-        
+        return
 
 class Triangle():
     def __init__(self, V1=None, V2=None, V3=None):
