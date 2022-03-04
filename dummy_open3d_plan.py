@@ -18,4 +18,5 @@ o3d.visualization.draw_geometries([pcd]) : 메쉬 시각화 하기
 
 
 출처: https://engineer-mole.tistory.com/248 [매일 꾸준히, 더 깊이]
+test
 """
