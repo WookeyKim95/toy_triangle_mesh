@@ -30,15 +30,16 @@ def find_center(input_list):
 
 
 class Octree():
-    def __init__(self, point):
+    # 중심점과 포인트리스트 삽입
+    def __init__(self, point, point_list):
         self.pt_x = point[0]
         self.pt_y = point[1]
         self.pt_z = point[2]
-        
+        self.this_list = point_list
         self.area = [[] for i in range(8)]
-
+        
         self.child_list = []
-
+    
     # 좌표 값에 따라서 팔분공간에 점을 분류하는 과정
     def insert(self, point):
         if point[0] >= self.pt_x and point[1] >= self.pt_x and point[2] >= self.pt_z:
@@ -66,5 +67,6 @@ for i in range(50):
     point_list.append((x, y, z))
 
 print(point_list)
-print(find_center(point_list))
+
+Octree_1 = Octree(find_center(point_list))
             
